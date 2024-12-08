@@ -48,3 +48,58 @@ Make sure you have the following installed:
    ```bash
    git clone https://github.com/Savi-uop/Assignment--frontend.git
 
+## cause issues with my laptop docker could not able to install. so that part not include.
+Thse are the steps i must run
+docker-compose up -d nginx mysql
+
+docker-compose.yml
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./your-laravel-app:/var/www/html
+    depends_on:
+      - php-fpm
+    networks:
+      - app-network
+
+  php-fpm:
+    build:
+      context: ./php-fpm
+    container_name: php-fpm
+    volumes:
+      - ./your-laravel-app:/var/www/html
+    networks:
+      - app-network
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel_user
+      MYSQL_PASSWORD: laravel_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+----------------------------------------------------------------------------------------------------------------------------
+
+docker-compose build
+docker-compose exec php-fpm php artisan migrate
