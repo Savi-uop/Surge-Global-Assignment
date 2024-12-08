@@ -36,9 +36,10 @@ You can log in to the application using the following user credentials:
 
 Make sure you have the following installed:
 
-- **PHP** (>= 7.3)
-- **Composer**
-- **Laravel** (if not already installed)
+- **PHP 8.2.12** (provided by XAMPP 8.2.12)
+- **XAMPP 8.2.12** (or any other suitable local server environment for PHP)
+- **Composer** (for installing Laravel dependencies)
+- **Laravel 10.x** (the Laravel framework is used for this project)
 - **MySQL** (or any database you plan to use)
 
 ### Installation
