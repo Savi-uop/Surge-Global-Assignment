@@ -1,4 +1,4 @@
-# Assignment Frontend
+# Assignment Social Media Platform
 
 This project is a frontend implementation for a web application built using **Laravel** and **Laravel Breeze** for user authentication. The application includes a **login system** with **Google reCAPTCHA** for added security.
 
